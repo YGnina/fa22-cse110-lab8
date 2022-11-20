@@ -5,4 +5,6 @@ Yining Gu
 
 2. No.
 
-3. 
+3. No, because unit tests are used to test functions. To send a message, it needs more units.
+
+4. Yes, because we could use only one function to test a max message length.
