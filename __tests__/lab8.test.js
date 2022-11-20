@@ -28,7 +28,6 @@ describe('Basic user flow for Website', () => {
     // Right now this function is only checking the first <product-item> it found, make it so that
     // it checks every <product-item> it found
     for(let i=0; i< prodItems.length;i++){
-      console.log(`Checking product item ${i + 1}/${prodItems.length}`);
       // Grab the .data property of <product-items> to grab all of the json data stored inside
       data = await prodItems[i].getProperty('data');
       // Convert that property to JSON
@@ -70,7 +69,7 @@ describe('Basic user flow for Website', () => {
     // Query select all of the <product-item> elements, then for every single product element
     // get the shadowRoot and query select the button inside, and click on it.
     const prodItems = await page.$$('product-item');    //page.$$ select all
-    for(let i=0; i<prodItems.length;i++){
+    for(let i=1; i<prodItems.length;i++){
       let shadowRoot = await prodItems[i].getProperty('shadowRoot');
       let button = await shadowRoot.$('button'); 
       await button.click();
