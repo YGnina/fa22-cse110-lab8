@@ -30,16 +30,16 @@ describe('Basic user flow for Website', () => {
     for(let i=0; i< prodItems.length;i++){
       console.log(`Checking product item ${i + 1}/${prodItems.length}`);
       // Grab the .data property of <product-items> to grab all of the json data stored inside
-      data = await prodItems[0].getProperty('data');
+      data = await prodItems[i].getProperty('data');
       // Convert that property to JSON
       plainValue = await data.jsonValue();
       // Make sure the title, price, and image are populated in the JSON
       if (plainValue.title.length == 0) { allArePopulated = false; }
       if (plainValue.price.length == 0) { allArePopulated = false; }
       if (plainValue.image.length == 0) { allArePopulated = false; }
-      // Expect allArePopulated to still be true
-      expect(allArePopulated).toBe(true);
     }
+    // Expect allArePopulated to still be true
+    expect(allArePopulated).toBe(true);
 
   }, 10000);
 
@@ -160,7 +160,7 @@ describe('Basic user flow for Website', () => {
     let cnt = await page.$('#cart-count');
     let cText = await cnt.getProperty('innerText');
     let text = await cText.jsonValue();
-    expect(text).toBe('20');
+    expect(text).toBe('0');
   }, 10000);
 
   // Checking to make sure that localStorage for the cart is as we'd expect for the
